@@ -31,12 +31,18 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
+  const variantText = {
+    'on-sale': 'Sale',
+    'new-release': 'Just Released',
+    default: 'Sale',
+  };
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
+        <VariantLabel variant={variant}>{variantText[variant]}</VariantLabel>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
@@ -51,10 +57,33 @@ const ShoeCard = ({
 };
 
 const Link = styled.a`
+  position: relative;
   text-decoration: none;
   color: inherit;
+  flex: 1 1 340px;
 `;
 
+const VariantLabel = styled.span`
+  position: absolute;
+  top: 12px;
+  right: 0;
+  padding: 3px 10px 3px;
+  width: auto;
+  color: ${COLORS.white};
+  border-radius: 2px;
+  font-size: ${14 / 16} + rem;
+  font-weight: 800;
+  background-color: ${(prop) => {
+    switch (prop.variant) {
+      case 'new-release':
+        return `${COLORS.primary}`;
+      case 'on-sale':
+        return `${COLORS.secondary}`;
+      default:
+        return `${COLORS.secondary}`;
+    }
+  }};
+`;
 const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
