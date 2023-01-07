@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import Spacer from '../Spacer';
 import { COLORS } from '../../constants';
 
 import SearchInput from '../SearchInput';
@@ -23,13 +23,18 @@ const SuperHeader = () => {
 };
 
 const Wrapper = styled.div`
+  display: flex;
   font-size: 0.875rem;
+  padding: 12px 32px 12px;
   color: ${COLORS.gray[300]};
   background-color: ${COLORS.gray[900]};
+  align-items: center;
+  gap: 24px;
 `;
 
 const MarketingMessage = styled.span`
   color: ${COLORS.white};
+  margin-right: auto;
 `;
 
 const HelpLink = styled.a`
